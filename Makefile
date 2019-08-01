@@ -19,10 +19,14 @@ rpm: $(TARGET)-$(VERSION).tar.bz2
 
 deb: clean
 	mkdir -p $(TARGET)-$(VERSION)/opt/tnef-reader
+	mkdir -p $(TARGET)-$(VERSION)/usr/share/applications
 	cp -r src/* $(TARGET)-$(VERSION)/opt/tnef-reader
+	cp extras/tnef-reader.desktop $(TARGET)-$(VERSION)/usr/share/applications
+	cp extras/tnef-reader.svg $(TARGET)-$(VERSION)/opt/tnef-reader
 	cp -r pkg/DEBIAN $(TARGET)-$(VERSION)
 	sed -i "s/VERSION/$(VERSION)/g" $(TARGET)-$(VERSION)/DEBIAN/control
 	dpkg-deb --build $(TARGET)-$(VERSION)
+
 
 
 clean:
