@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Tnef Viewer
+Comment=View tnef contents
+Exec=/opt/tnef-reader/TnefReader.py %F
+Icon=/opt/tnef-reader/tnef-reader.svg
+Terminal=false
+MimeType=application/vnd.ms-tnef
