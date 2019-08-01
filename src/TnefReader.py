@@ -63,6 +63,18 @@ class TnefReader:
 		self.ventana.show_all()
 
 if __name__ == '__main__':
+	def printHelp():
+		print("USE:")
+		print("%s <file>" % sys.argv[0])
+		
+	if len(sys.argv) == 1:
+		printHelp()
+		sys.exit(1)
+
+	if not os.path.exists(sys.argv[1]):
+		print("%s not exists" % sys.argv[1])
+		sys.exit(1)
+
 	d = TnefReader(sys.argv[1])
 	d.run()
 	gtk.main()
