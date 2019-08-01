@@ -1,0 +1,8 @@
+Package: tnef-reader
+Version: 0.1
+Section: Network
+Priority: optional
+Architecture: all
+Depends: python-gi tnef
+Maintainer: Julio A. García López <juliosao@gmail.com>
+Description: Cliente SQL

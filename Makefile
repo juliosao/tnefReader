@@ -1,22 +1,18 @@
 TARGET=tnef-reader
-VERSION=$(shell awk '/Version:/ { print $$2 }' $(TARGET).spec)
+VERSION=0.1
 COMPANY=aldeasa
-DIST=Makefile $(TARGET).spec ./compila-traducciones.sh ./actualiza-traducciones.sh src extras
+DIST=Makefile src extras pkg
 
 .phony: pkg clean install locales all 
-
-all: locales 
 
 $(TARGET)-$(VERSION).tar.bz2: clean
 	mkdir $(TARGET)-$(VERSION)
 	cp -r $(DIST) $(TARGET)-$(VERSION)
-	tar cvjf $(TARGET)-$(VERSION).tar.bz2 $(TARGET)-$(VERSION) --exclude=".svn" --exclude="*.pyc" --exclude="*.pyo"
+	sed -i "s/VERSION/$(VERSION)/g" $(TARGET)-$(VERSION)/pkg/tnef-reader.spec
+	sed -i "s/VERSION/$(VERSION)/g" $(TARGET)-$(VERSION)/pkg/DEBIAN/control
+	tar --exclude=".svn" --exclude="*.pyc" --exclude="*.pyo" -cvjf $(TARGET)-$(VERSION).tar.bz2 $(TARGET)-$(VERSION)
 	rm -rf $(TARGET)-$(VERSION)
 
-locales:
-	touch ./compila-traducciones.sh
-
-pkg: 	$(TARGET)-$(VERSION).tar.bz2
 
 rpm:  	$(TARGET)-$(VERSION).tar.bz2
 	rpmbuild -tb $(TARGET)-$(VERSION).tar.bz2
