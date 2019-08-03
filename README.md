@@ -7,6 +7,7 @@ This project aims to be a graphical interface to open winmail.dat files generate
 - execute TnefReader.py with winmail.dat file as argument
 
 ## Install
+- Make sure you have tnef and python-gi installed
 - Go into project folder
 - Execute "make install" (without the quotes)
 - Execute update-desktop-database
