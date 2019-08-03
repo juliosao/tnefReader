@@ -51,22 +51,16 @@ class TnefReader:
 		response = dialog.run()
 
 		if response == gtk.ResponseType.OK:
-			print("Open clicked")
-			print("File selected: " + dialog.get_filename())
-			print(tm.get_value(ti, 0))
 			self.tnef.extract(tm.get_value(ti, 0),dialog.get_filename())
-		elif response == gtk.ResponseType.CANCEL:
-			print("Cancel clicked")
+		
 		dialog.destroy()
 			
 
 	def guardarTodo(self,sender):
 		tree_sel = self.lista.get_selection()
 		(tm, ti) = tree_sel.get_selected()
-		print tm.get_value(ti, 0)
 
 	def on_close(self,sender):
-		print "Saliendo!"
 		self.tnef.close()
 		self.ventana.destroy()
 		gtk.main_quit()
