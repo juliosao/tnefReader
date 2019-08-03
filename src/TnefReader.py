@@ -73,7 +73,7 @@ class TnefReader:
 		self.ventana.destroy()
 		gtk.main_quit()
 
-	def alert(self,text,title="TNEF Reade",mode=gtk.MessageType.INFO):
+	def alert(self,text,title="TNEF Reader",mode=gtk.MessageType.INFO):
 		dlg = gtk.MessageDialog(self.ventana, 0, mode,
             gtk.ButtonsType.OK, text)
 		dlg.set_title(title)
