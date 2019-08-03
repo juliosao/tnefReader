@@ -1,5 +1,5 @@
 # tnefReader
-A tnef / Winmail.dat reader for Linux
+A tnef / Winmail.dat reader with graphic interface for Linux
 
 This project aims to be a graphical interface to open winmail.dat files generated with outlook.
 
