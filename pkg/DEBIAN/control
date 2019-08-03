@@ -5,4 +5,4 @@ Priority: optional
 Architecture: all
 Depends: python-gi, tnef
 Maintainer: Julio A. García López <juliosao@gmail.com>
-Description: Cliente SQL
+Description: Utility for view content of Tnef files like Winmail.dat

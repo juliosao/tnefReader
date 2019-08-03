@@ -24,7 +24,6 @@ class TnefMgr:
 		self.tmpPath = None
 
 	def open(self):
-		print "Abriendo"
 		self.tmpPath = tempfile.mkdtemp()
 		subprocess.call(["/usr/bin/tnef", "-f", self.fpath, "-C", self.tmpPath])
 

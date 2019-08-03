@@ -1,3 +1,4 @@
+tnef-reader-*
 .vscode
-tnef-reader-0.1.*
-tnef-reader-0.1
+**/.vscode
+**/*~

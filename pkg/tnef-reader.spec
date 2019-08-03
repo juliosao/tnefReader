@@ -24,12 +24,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/opt/%name/mime
-
-cp -rf src/* $RPM_BUILD_ROOT/opt/%name
-mkdir -p $RPM_BUILD_ROOT/usr/share/applications
-cp extras/tnef-reader.desktop $RPM_BUILD_ROOT/usr/share/applications
-cp extras/tnef-reader.svg $RPM_BUILD_ROOT/opt/%name
+make install DESTDIR=$RPM_BUILD_ROOT
 
 %post
 update-desktop-database

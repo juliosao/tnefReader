@@ -20,7 +20,6 @@ class TnefReader:
 		builder.connect_signals(self)
 		self.ventana=builder.get_object('main')
 		self.lista=builder.get_object('lista')
-
 		
 
 	def rellenaFicheros(self):
@@ -37,23 +36,31 @@ class TnefReader:
 		for f in self.ficheros:
 			store.append([f,str(self.tnef.getSize(f))])
 
-		
 
 	def on_lista_row_activated(self,sender,numero,noUsado):
 		self.tnef.preview(self.ficheros[numero[0]])
 
-	def on_btnGuardar_clicked(self,sender):
+	def on_btnSave_clicked(self,sender):
 		tree_sel = self.lista.get_selection()
 		(tm, ti) = tree_sel.get_selected()
-		print tm.get_value(ti, 0)
+		
+		dialog = gtk.FileChooserDialog("Please choose a folder", self.ventana, gtk.FileChooserAction.SAVE,	
+			(gtk.STOCK_CANCEL, gtk.ResponseType.CANCEL, "Select", gtk.ResponseType.OK))
+		dialog.set_current_name(tm.get_value(ti, 0))
+		dialog.set_default_size(800, 400)
+		response = dialog.run()
+
+		if response == gtk.ResponseType.OK:
+			self.tnef.extract(tm.get_value(ti, 0),dialog.get_filename())
+		
+		dialog.destroy()
+			
 
 	def guardarTodo(self,sender):
 		tree_sel = self.lista.get_selection()
 		(tm, ti) = tree_sel.get_selected()
-		print tm.get_value(ti, 0)
 
 	def on_close(self,sender):
-		print "Saliendo!"
 		self.tnef.close()
 		self.ventana.destroy()
 		gtk.main_quit()
