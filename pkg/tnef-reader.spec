@@ -10,7 +10,7 @@ Group: Network
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
-Requires: tnef python-gi
+Requires: tnef python-gobject
 
 
 %description
@@ -43,12 +43,11 @@ rm -rf $RPM_BUILD_ROOT
 /opt/tnef-reader/tnefmgr.pyc
 /opt/tnef-reader/tnefmgr.pyo
 /opt/tnef-reader/ui/main.glade
-/opt/tnef-reader/ui/guardar.glade
 /usr/share/applications/tnef-reader.desktop
 
 %changelog
 
-* Thu Aug 2 2019 Julio A. García López <juliosao@gmail.com> 0.1
+* Fri Aug 2 2019 Julio A. García López <juliosao@gmail.com> 0.1
 - Initial (And incomplete) package
 
 

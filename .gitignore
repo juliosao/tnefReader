@@ -2,3 +2,5 @@ tnef-reader-*
 .vscode
 **/.vscode
 **/*~
+**/__pycache__
+**/*.pyc

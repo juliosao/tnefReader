@@ -13,6 +13,7 @@
   <object class="GtkWindow" id="main">
     <property name="can_focus">False</property>
     <property name="is_focus">True</property>
+    <property name="title" translatable="yes">Tnef Reader</property>
     <property name="default_width">640</property>
     <property name="default_height">480</property>
     <property name="destroy_with_parent">True</property>
@@ -27,10 +28,26 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkToolbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">Fichero:</property>
+            <child>
+              <object class="GtkToolButton">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="tooltip_text" translatable="yes">Save currently selected file</property>
+                <property name="is_important">True</property>
+                <property name="label" translatable="yes">Save</property>
+                <property name="use_underline">True</property>
+                <property name="stock_id">gtk-save</property>
+                <signal name="clicked" handler="on_btnSave_clicked" swapped="no"/>
+                <accelerator key="s" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -48,6 +65,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="model">fileStore</property>
+                <property name="search_column">0</property>
                 <signal name="row-activated" handler="on_lista_row_activated" swapped="no"/>
                 <child internal-child="selection">
                   <object class="GtkTreeSelection"/>
@@ -59,37 +77,6 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="homogeneous">True</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnSave">
-                <property name="label">gtk-save-as</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-                <property name="image_position">top</property>
-                <signal name="clicked" handler="on_btnSave_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
